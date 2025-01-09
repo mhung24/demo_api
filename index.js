@@ -9,7 +9,7 @@ app.get("/api", dataApi.getList);
 let bdparser = require("body-parser");
 app.use(express.json());
 // app.use("/", api);
-
+app.use(cors());
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
