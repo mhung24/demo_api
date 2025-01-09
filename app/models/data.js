@@ -1,5 +1,22 @@
 const db = require("../common/connect.js");
 
+const testData = [
+  {
+    id: 1,
+    username: "hung",
+  },
+
+  {
+    id: 2,
+    username: "hung1",
+  },
+
+  {
+    id: 3,
+    username: "hung2",
+  },
+];
+
 const data = (data) => {
   (this.id = data.id),
     (this.title = data.title),
@@ -67,61 +84,65 @@ let ratings = [
 
 let listData = [];
 
+// data.getAll = (result) => {
+//   const getRating = (id) => {};
+//   const checkData = (id, index) => {
+//     listAPI.filter((i) => {
+//       if (i.id == id && listData.length < index) {
+//         listData = [...listData, i];
+//       }
+//     });
+//   };
+//   db.query(
+//     `SELECT * FROM products AS a, images as b, dimensions as d WHERE a.id = b.id_product =  d.id_product`,
+//     (err, data) => {
+//       data.forEach((item, index) => {
+//         dimensions = {
+//           height: item.height,
+//           width: item.width,
+//           depth: item.depth,
+//         };
+//         db.query(
+//           `SELECT rating, comment, date, reviewerName, reviewerEmail, reviewerAvatar, id_product FROM rating  WHERE id_product = ${item.id}`,
+//           (err, data1) => {
+//             listAPI = [
+//               ...listAPI,
+//               {
+//                 id: item.id,
+//                 title: item.title,
+//                 description: item.description,
+//                 category: item.category,
+//                 importPrice: item.importPrice,
+//                 sellingPrice: item.sellingPrice,
+//                 discountPercentage: item.discountPercentage,
+//                 brand: item.brand,
+//                 weight: item.weight,
+//                 dimensions,
+//                 warrantyInformation: item.warrantyInformation,
+//                 rating: data1[index].id_product == item.id ? data1 : "err",
+//                 returnPolicy: item.returnPolicy,
+//                 supplier: item.supplier,
+//                 images: item.url,
+//                 thumbnail: item.thumbnail,
+//               },
+//             ];
+//           }
+//         );
+
+//         checkData(item.id, data.length);
+//       });
+
+//       if (err || data.length == 0) {
+//         result(null);
+//       } else {
+//         result(listData);
+//       }
+//     }
+//   );
+// };
+
 data.getAll = (result) => {
-  const getRating = (id) => {};
-  const checkData = (id, index) => {
-    listAPI.filter((i) => {
-      if (i.id == id && listData.length < index) {
-        listData = [...listData, i];
-      }
-    });
-  };
-  db.query(
-    `SELECT * FROM products AS a, images as b, dimensions as d WHERE a.id = b.id_product =  d.id_product`,
-    (err, data) => {
-      data.forEach((item, index) => {
-        dimensions = {
-          height: item.height,
-          width: item.width,
-          depth: item.depth,
-        };
-        db.query(
-          `SELECT rating, comment, date, reviewerName, reviewerEmail, reviewerAvatar, id_product FROM rating  WHERE id_product = ${item.id}`,
-          (err, data1) => {
-            listAPI = [
-              ...listAPI,
-              {
-                id: item.id,
-                title: item.title,
-                description: item.description,
-                category: item.category,
-                importPrice: item.importPrice,
-                sellingPrice: item.sellingPrice,
-                discountPercentage: item.discountPercentage,
-                brand: item.brand,
-                weight: item.weight,
-                dimensions,
-                warrantyInformation: item.warrantyInformation,
-                rating: data1[index].id_product == item.id ? data1 : "err",
-                returnPolicy: item.returnPolicy,
-                supplier: item.supplier,
-                images: item.url,
-                thumbnail: item.thumbnail,
-              },
-            ];
-          }
-        );
-
-        checkData(item.id, data.length);
-      });
-
-      if (err || data.length == 0) {
-        result(null);
-      } else {
-        result(listData);
-      }
-    }
-  );
+  result(testData);
 };
 
 data.detail = (id, result) => {
